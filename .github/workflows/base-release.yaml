@@ -64,12 +64,14 @@ jobs:
         run: make generate-sources
 
       - name: Log into Docker.io
+        if: ${{ github.repository_owner == 'open-telemetry' }}
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Package Registry
+        if: ${{ github.repository_owner == 'open-telemetry' }}
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
         with:
           registry: ghcr.io
@@ -139,12 +141,14 @@ jobs:
         run: ls -R distributions/${{ inputs.distribution }}/dist
 
       - name: Log into Docker.io
+        if: ${{ github.repository_owner == 'open-telemetry' }}
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Package Registry
+        if: ${{ github.repository_owner == 'open-telemetry' }}
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
         with:
           registry: ghcr.io
